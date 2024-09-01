@@ -65,10 +65,30 @@ const spin = () => {
       reelSymbol.splice(randomIndex, 1);
     }
   }
+
   return reels;
 };
 
-spin();
+const printRows = (reels) => {
+  let stringRow = ' ';
+  let index = 0;
+  for (let i = 0; i < reels.length; i++) {
+    for (const item of reels[i]) {
+      stringRow += item;
+      if (index != reels[0].length -1) {
+        stringRow += " | ";
+        index++;
+      } else {
+        console.log(stringRow);
+        stringRow = ' ';
+        index = 0;
+      }
+    }
+  }
+};
+
 // let balance = deposit();
 // const lines = getNumberOfLines();
-// bet(balance,lines);
+// bet(balance, lines);
+const reels = spin();
+printRows(reels);
